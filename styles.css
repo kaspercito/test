@@ -99,7 +99,7 @@ button:not(:disabled):hover {
   margin-top: 10px;
 }
 
-.stars-container {
+#birthday-stars-container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
