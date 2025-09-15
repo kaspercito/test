@@ -1,29 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
   console.log("DOM cargado, iniciando cuenta regresiva");
 
-  const firstCountdownDate = new Date('2025-09-15T21:02:00Z'); // 16:02 ECT (5 min desde ahora)
-  const birthdayDate = new Date('2025-09-15T21:07:00Z'); // 16:07 ECT (5 min después)
+  const firstCountdownDate = new Date('2025-09-15T21:06:00Z'); // 16:06 ECT (5 min desde ahora)
+  const birthdayDate = new Date('2025-09-15T21:11:00Z'); // 16:11 ECT (5 min después)
   const countdownElement = document.getElementById('countdown');
   const surpriseButton = document.getElementById('surprise-button');
   const waitMessage = document.getElementById('wait-message');
   const initialMessage = document.getElementById('initial-message');
-  const starsContainer = document.getElementById('stars-container');
 
   function updateCountdown() {
     const now = new Date();
     let timeLeft;
 
     if (now < firstCountdownDate) {
-      // Primera cuenta regresiva hasta 16:02 ECT
+      // Primera cuenta regresiva hasta 16:06 ECT
       timeLeft = firstCountdownDate - now;
       const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
       const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
       countdownElement.innerText = `Días: ${days}, Horas: ${hours}, Minutos: ${minutes}, Segundos: ${seconds}.`;
-      initialMessage.innerText = "¡Estoy re feliz! 😎 Algo súper especial viene en camino, pero primero mirá esta cuenta regresiva. ¡Preparate para la magia!";
+      initialMessage.innerText = "¡Gracias por haber compartido ayer conmigo! 😎 Algo súper especial viene en camino, pero primero mirá esta cuenta regresiva hasta las 18:00 Hora Ecuador. ¡Preparate para la magia!";
     } else if (now < birthdayDate) {
-      // Segunda cuenta regresiva hasta 16:07 ECT
+      // Segunda cuenta regresiva hasta 16:11 ECT
       timeLeft = birthdayDate - now;
       const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
       const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -44,19 +43,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const countdownInterval = setInterval(updateCountdown, 1000);
   updateCountdown();
 
-  // Manejo de clics en las estrellas
-  document.querySelectorAll('.star, #special-star').forEach(star => {
-    star.addEventListener('click', () => {
-      starsContainer.classList.add('hidden');
-      initialMessage.classList.remove('hidden');
-    });
-  });
-
   surpriseButton.addEventListener('click', () => {
     if (surpriseButton.disabled) {
       waitMessage.classList.remove('hidden');
       setTimeout(() => waitMessage.classList.add('hidden'), 3000);
     }
+  });
+
+  // Manejo de clics en las estrellas de cumpleaños
+  document.querySelectorAll('#birthday-stars-container .star, #birthday-stars-container #special-star').forEach(star => {
+    star.addEventListener('click', () => {
+      document.getElementById('birthday-stars-container').classList.add('hidden');
+      document.getElementById('birthday-text').classList.remove('hidden');
+    });
   });
 });
 
