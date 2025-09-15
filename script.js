@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
   console.log("DOM cargado, iniciando cuenta regresiva");
 
-  const firstCountdownDate = new Date('2025-09-15T19:21:00Z'); // 14:21 ECT (5 min desde ahora)
-  const birthdayDate = new Date('2025-09-15T19:26:00Z'); // 14:26 ECT (5 min después)
+  const firstCountdownDate = new Date('2025-09-15T21:02:00Z'); // 16:02 ECT (5 min desde ahora)
+  const birthdayDate = new Date('2025-09-15T21:07:00Z'); // 16:07 ECT (5 min después)
   const countdownElement = document.getElementById('countdown');
   const surpriseButton = document.getElementById('surprise-button');
   const waitMessage = document.getElementById('wait-message');
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let timeLeft;
 
     if (now < firstCountdownDate) {
-      // Primera cuenta regresiva hasta 14:21 ECT
+      // Primera cuenta regresiva hasta 16:02 ECT
       timeLeft = firstCountdownDate - now;
       const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
       const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
       countdownElement.innerText = `Días: ${days}, Horas: ${hours}, Minutos: ${minutes}, Segundos: ${seconds}.`;
       initialMessage.innerText = "¡Estoy re feliz! 😎 Algo súper especial viene en camino, pero primero mirá esta cuenta regresiva. ¡Preparate para la magia!";
     } else if (now < birthdayDate) {
-      // Segunda cuenta regresiva hasta 14:26 ECT
+      // Segunda cuenta regresiva hasta 16:07 ECT
       timeLeft = birthdayDate - now;
       const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
       const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
